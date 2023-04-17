@@ -51,6 +51,23 @@
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurants.image}}" alt="{{restaurants.name}}"
         style="max-width: 600px;">
+      
     </div>
+    <ul class="detail-ul" style="text-align:center font-size:24px;">
+      <li style="display:inline">
+        {{!-- <a href="/restaurants/{{this._id}}/edit">Edit</a>
+        <a href="/restaurants/{{this._id}}/detail">Detail</a> --}}
+        <form action="/restaurants/{{this._id}}/edit" method="GET" style="display:inline">
+          <button class="btn btn-outline-secondary" type="submit">Edit</button>
+        </form>
+        <form action="/restaurants/{{this._id}}/detail" method="GET" style="display:inline">
+          <button class="btn btn-outline-secondary" type="submit">Detail</button>
+        </form>
+      <form action="/restaurants/{{this._id}}/delete" method="POST" style="display:inline">
+        <button class="btn btn-outline-danger" type="submit">Delete</button>
+      </form>
+      </li>
+    </ul>
   </div>
+  <a class="btn btn-light create-plus" href="#" role="button"><i class="fa-solid fa-plus" style="color: #fff;"></i></a>
 </div>

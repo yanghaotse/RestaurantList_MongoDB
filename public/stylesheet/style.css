@@ -51,7 +51,7 @@ header {
 }
 
 .card {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card img{
@@ -99,6 +99,49 @@ header {
   }
   
 }
-span{
+
+.restaurant-container{
+  max-width: 25%;
+}
+
+.row-cols-1{
+  display:flex;
+  /* justify-content: center; */
+  justify-content: space-between;
   text-decoration: none;
 }
+
+.index-ul{
+  text-align: end;
+  /* font-family: 'Open Sans', sans-serif; */
+  
+}
+.detail-ul{
+  text-align:center;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  font-family:'Open Sans', sans-serif;
+}
+
+.create-plus{
+  /* display:flex; */
+  font-size:30px;
+  position: fixed;
+  bottom: 20px;
+  right:5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  /* padding: 10px; */
+  background-color: #e90707;
+}
+/* 
+.create-button{
+  border-radius: 50%;
+} */
