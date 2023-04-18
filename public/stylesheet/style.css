@@ -100,7 +100,7 @@ header {
   
 }
 
-.restaurant-container{
+.container-restaurant{
   max-width: 25%;
 }
 
@@ -126,7 +126,7 @@ ul{
   font-family:'Open Sans', sans-serif;
 }
 
-.create-plus{
+#create-plus{
   /* display:flex; */
   font-size:30px;
   position: fixed;
@@ -141,7 +141,31 @@ ul{
   /* padding: 10px; */
   background-color: #e90707;
 }
-/* 
-.create-button{
-  border-radius: 50%;
-} */
+.container-new{
+  /* display:flex;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px; */
+  width: 60%;
+  margin: 2em auto;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: antiquewhite;
+  /* text-align: end; */
+}
+
+input.form-control{
+  margin-left:5px;
+}
+.form-button{
+  text-align: end;
+}
+
+.restaurant-new-title {
+  position: relative;
+  top: 15px;
+  color:rgb(233, 176, 101);
+  text-align: center;
+  font-size: 3rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}

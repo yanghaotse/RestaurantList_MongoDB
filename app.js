@@ -37,15 +37,23 @@ app.get('/',(req, res) => {
     .then((restaurants) => res.render("index", { restaurants }))
     .catch(error => console.log(error))
 })
-app.get('/restaurants/:_id', (req,res) => {
+app.get('/restaurants/:_id/detail', (req,res) => {
   const id = req.params._id
   // console.log(id)
   return Restaurant.findById(id)
     .lean()
     .then((restaurants) => res.render("detail", { restaurants }))
     .catch(error => console.log(error))
-  
 })
+//new 頁面路由
+app.get('/restaurants/new', (req, res) => {
+  return res.render("new")
+})
+//新增 post路由
+// app.post('/restaurants', (req, res) => {
+  
+// })
+
 
 
 app.listen( port, () => {
