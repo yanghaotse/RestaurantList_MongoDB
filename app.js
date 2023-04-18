@@ -30,6 +30,7 @@ db.once('open', () => {
 
 
 
+
 app.get('/',(req, res) => {
   // res.render("index")
   Restaurant.find()
@@ -37,6 +38,33 @@ app.get('/',(req, res) => {
     .then((restaurants) => res.render("index", { restaurants }))
     .catch(error => console.log(error))
 })
+
+//new 頁面路由
+app.get('/restaurants/new', (req, res) => {
+  return res.render("new")
+})
+
+
+// 新增 post路由
+app.post('/restaurants', (req, res) => {
+  const bodyParser = req.body
+  // console.log(bodyParser)
+  return Restaurant.create( {
+    name: bodyParser.name,
+    name_en: bodyParser.name_en,
+    category: bodyParser.category,
+    image: bodyParser.image,
+    location: bodyParser.location,
+    phone: bodyParser.phone,
+    google_map: bodyParser.google_map,
+    rating: bodyParser.rating,
+    description: bodyParser.description
+  })
+    .then( () => res.redirect('/'))
+    .catch( error => console.log(error))
+
+})
+
 app.get('/restaurants/:_id/detail', (req,res) => {
   const id = req.params._id
   // console.log(id)
@@ -45,14 +73,7 @@ app.get('/restaurants/:_id/detail', (req,res) => {
     .then((restaurants) => res.render("detail", { restaurants }))
     .catch(error => console.log(error))
 })
-//new 頁面路由
-app.get('/restaurants/new', (req, res) => {
-  return res.render("new")
-})
-//新增 post路由
-// app.post('/restaurants', (req, res) => {
-  
-// })
+
 
 
 

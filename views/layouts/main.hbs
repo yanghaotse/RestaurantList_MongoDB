@@ -36,6 +36,18 @@
   {{{body}}}
   <script src="/javascript.popper.js"></script>
   <script src="/javascript.bootstrap.js"></script>
+  {{!-- 表單驗證 --}}
+  <script>
+    const createButton = document.querySelector('#create-button')
+    const form = document.querySelector('#form')
+    createButton.addEventListener('click', function onCreateButtonClicked(event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    })
+  </script>
 </body>
 
 </html>
