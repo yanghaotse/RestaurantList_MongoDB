@@ -36,6 +36,25 @@ app.get('/',(req, res) => {
     .catch(error => console.log(error))
 })
 
+// 搜尋路由
+app.get('/search',(req, res) => {
+  const keyword = req.query.keyword
+  // console.log(keyword)
+  if (!keyword){
+    return res.redirect('/')
+  }
+  Restaurant.find()
+    .lean()
+    .then( restaurants => {
+      const restaurant = restaurants.filter( (item) => {
+        return item.name.toLowerCase().trim().includes(keyword.toLowerCase()) || item.category.toLowerCase().trim().includes(keyword.toLowerCase()) //注意必須加return，否則收不到資料
+      })
+      res.render('index', { restaurants : restaurant, keyword })
+      // console.log(restaurant)
+    })
+    .catch( error => console.log(error))
+})
+
 //新增路由 GET
 app.get('/restaurants/new', (req, res) => {
   return res.render("new")
