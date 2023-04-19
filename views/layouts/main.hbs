@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" href="/stylesheet/bootstrap.css">
   <link rel="stylesheet" href="/stylesheet/style.css">
-  
+
 </head>
 
 <body>
@@ -36,6 +36,8 @@
   {{{body}}}
   <script src="/javascript.popper.js"></script>
   <script src="/javascript.bootstrap.js"></script>
+  {{!--
+  <script src="/public/javascript/delete_confirm.js"></script> --}}
   {{!-- 表單驗證 --}}
   <script>
     const createButton = document.querySelector('#create-button')
@@ -47,6 +49,23 @@
       }
       form.classList.add('was-validated')
     })
+
+    
+  </script>
+  {{!-- delete-button監聽 --}}
+  <script>
+    //const deleteForm = document.querySelector('#delete-form')
+    const deleteButtons = document.querySelectorAll('#delete-button')
+    deleteButtons.forEach(deleteButton => {
+      deleteButton.addEventListener('click', function onDeleteButtonClicked(event) {
+        event.preventDefault()
+        if (confirm("確定要刪除此筆餐廳資料嗎?")) {
+          const deleteForm = deleteButton.parentElement
+          deleteForm.submit()
+        }
+      })
+    })
+    
   </script>
 </body>
 

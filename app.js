@@ -28,9 +28,6 @@ db.once('open', () => {
 })
 
 
-
-
-
 app.get('/',(req, res) => {
   // res.render("index")
   Restaurant.find()
@@ -39,13 +36,13 @@ app.get('/',(req, res) => {
     .catch(error => console.log(error))
 })
 
-//new 頁面路由
+//新增路由 GET
 app.get('/restaurants/new', (req, res) => {
   return res.render("new")
 })
 
 
-// 新增 post路由
+// 新增路由POST
 app.post('/restaurants', (req, res) => {
   const bodyParser = req.body
   // console.log(bodyParser)
@@ -64,7 +61,7 @@ app.post('/restaurants', (req, res) => {
     .catch( error => console.log(error))
 
 })
-
+// 瀏覽一筆資料GET
 app.get('/restaurants/:_id/detail', (req,res) => {
   const id = req.params._id
   // console.log(id)
@@ -74,8 +71,43 @@ app.get('/restaurants/:_id/detail', (req,res) => {
     .catch(error => console.log(error))
 })
 
+// 編輯一筆資料 GET
+app.get('/restaurants/:_id/edit', (req,res) => {
+  const id = req.params._id
+  return Restaurant.findById(id)
+    .lean()
+    .then( (restaurants) => res.render('edit', { restaurants }))
+    .catch( error => console.log(error))
+})
 
-
+// 編輯一筆資料 POST
+app.post('/restaurants/:_id/edit', (req,res) => {
+  const id = req.params._id
+  const bodyParser = req.body
+  return Restaurant.findById(id)
+    .then((restaurants) => {
+      restaurants.name = bodyParser.name
+      restaurants.name_en = bodyParser.name_en
+      restaurants.category = bodyParser.category
+      restaurants.image = bodyParser.image
+      restaurants.location = bodyParser.location
+      restaurants.phone = bodyParser.phone
+      restaurants.google_map = bodyParser.google_map
+      restaurants.rating = bodyParser.rating
+      restaurants.description = bodyParser.description
+      return restaurants.save()
+    })
+    .then(() => res.redirect("/"))
+    .catch( error => console.log(error))
+})
+// 刪除一筆資料
+app.post('/restaurants/:_id/delete', (req,res) => {
+  const id = req.params._id
+  return Restaurant.findById(id)
+    .then( (restaurants) => restaurants.remove()) 
+    .then( () => res.redirect('/'))
+    .catch( error => console.log(error))
+})
 
 app.listen( port, () => {
   console.log(`Express is running on http://localhost:${port}`)

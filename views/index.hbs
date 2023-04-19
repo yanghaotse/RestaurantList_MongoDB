@@ -41,8 +41,8 @@
               <li style="display:inline">
                 <a href="/restaurants/{{this._id}}/edit">Edit</a>
                 <a href="/restaurants/{{this._id}}/detail">Detail</a>
-                <form action="/restaurants/{{this._id}}/delete" method="POST" style="display:inline">
-                  <button class="btn btn-outline-danger" type="submit">Delete</button>
+                <form action="/restaurants/{{this._id}}/delete" method="POST" id="delete-form" style="display:inline">
+                  <button class="btn btn-outline-danger" type="submit" id="delete-button">Delete</button>
                   {{!-- <button class="btn btn-danger" type="submit">Delete</button> --}}
                 </form>
               </li>
