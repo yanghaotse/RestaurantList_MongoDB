@@ -34,7 +34,7 @@
       
               <span class="font-weight-normal">
                 {{this.rating}}
-                <i class="fa-solid fa-star" style="color: #e60505;"></i>
+                <i class="fa-solid fa-star" style="color: #f0e800;"></i>
               </span>
             </div>
             <ul class="index-ul">
@@ -43,7 +43,6 @@
                 <a href="/restaurants/{{this._id}}/detail">Detail</a>
                 <form action="/restaurants/{{this._id}}/delete" method="POST" id="delete-form" style="display:inline">
                   <button class="btn btn-outline-danger" type="submit" id="delete-button">Delete</button>
-                  {{!-- <button class="btn btn-danger" type="submit">Delete</button> --}}
                 </form>
               </li>
             </ul>
@@ -53,9 +52,5 @@
     {{/each}}
   </div>
   <a class="btn btn-light" id="create-plus" role="button" href="/restaurants/new"><i class="fa-solid fa-plus" style="color: #fff;"></i></a>
-  {{!-- <a href="/restaurants/new">create</a> --}}
-</div>
 
-  {{!-- <form action="/restaurants/new" class="fixed-button">
-    <button type="submit"><i class="create-button fa-solid fa-plus" style="color: #000000;"></i></button>
-  </form> --}}
+</div>
