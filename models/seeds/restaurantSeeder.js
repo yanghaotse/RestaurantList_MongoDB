@@ -11,22 +11,29 @@ const db = mongoose.connection
 db.on("error", () => {
   console.log("mongodb error!")
 })
-db.once("open", () => {
+db.once("open", async() => {   
   console.log("mongodb connected!")
-  for(let i = 0; i < restaurantList.length; i++){
-    Restaurant.create({ 
-      name: `${restaurantList[i].name}`,
-      name_en: `${restaurantList[i].name_en}`,
-      category: `${restaurantList[i].category}`,
-      image: `${restaurantList[i].image}`,
-      location: `${restaurantList[i].location}`,
-      phone: `${restaurantList[i].phone}`,
-      google_map: `${restaurantList[i].google_map}`,
-      rating: `${restaurantList[i].rating}`,
-      description: `${restaurantList[i].description}`
-    })
+  try{
+    for(let i = 0; i < restaurantList.length; i++){
+      await Restaurant.create({ 
+        name: `${restaurantList[i].name}`,
+        name_en: `${restaurantList[i].name_en}`,
+        category: `${restaurantList[i].category}`,
+        image: `${restaurantList[i].image}`,
+        location: `${restaurantList[i].location}`,
+        phone: `${restaurantList[i].phone}`,
+        google_map: `${restaurantList[i].google_map}`,
+        rating: `${restaurantList[i].rating}`,
+        description: `${restaurantList[i].description}`
+      })
+      
+    }
+    console.log("restaurantSeeder done.")
+  }catch (error) {
+    console.log(error)
+  }finally{
+    db.close()
   }
-  console.log("done.")
 })
 
 // const restaurantList = require("../restaurant-list.json").results
